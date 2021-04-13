@@ -1,10 +1,10 @@
-# 그것을 Algo싶다
+# 그것이algo싶다
  
 ## 정기모임
 주 1회 온/오프라인
 
 ## Language
-Java/C++/Python 중 택1
+Java/C++/Python 이중 택1
 
 ## Education
 - Data Type
