@@ -6,13 +6,13 @@ class Solution {
 
         StringBuilder sb = new StringBuilder();
 
-        while(n > 0) {
-            if(n%3 == 0) {
+        while (n > 0) {
+            if (n % 3 == 0) {
                 sb.append(4);
             } else {
-                sb.append(n%3);
+                sb.append(n % 3);
             }
-            n = (n-1)/3;
+            n = (n - 1) / 3;
         }
         return sb.reverse().toString();
     }

@@ -5,10 +5,10 @@ class Solution {
     public static int[] solution(String s) {
         int count = 0;
         int zeroCount = 0;
-        while(!s.equals("1")) {
+        while (!s.equals("1")) {
             count++;
             String zeroRemovedStr = s.replaceAll("0", "");
-            zeroCount += s.length()-zeroRemovedStr.length();
+            zeroCount += s.length() - zeroRemovedStr.length();
             s = binaryString(zeroRemovedStr.length());
         }
         return new int[]{count, zeroCount};
@@ -16,8 +16,8 @@ class Solution {
 
     public static String binaryString(int n) {
         String temp = "";
-        while(n > 0) {
-            temp = (n%2) + temp;
+        while (n > 0) {
+            temp = (n % 2) + temp;
             n /= 2;
         }
         return temp;

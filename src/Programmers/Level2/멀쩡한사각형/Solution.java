@@ -3,19 +3,19 @@ package Programmers.Level2.멀쩡한사각형;
 
 class Solution {
     public static long solution(int w, int h) {
-        return (long)w * h - (w+h-gcd(w, h));
+        return (long) w * h - (w + h - gcd(w, h));
     }
 
     public static int gcd(int a, int b) {
-        if(a < b) {
+        if (a < b) {
             int temp = a;
             a = b;
             b = temp;
         }
 
-        while(true) {
-            int temp = a%b;
-            if(temp == 0)
+        while (true) {
+            int temp = a % b;
+            if (temp == 0)
                 return b;
             a = b;
             b = temp;

@@ -10,11 +10,11 @@ class Solution {
 
         int answer = 0;
         int left = 0;
-        int right = people.length-1;
-        while(left <= right) {
-            if(people[left] + people[right] > limit) { // 최소+최대가 limit 초과일 시 최대만 태우기
+        int right = people.length - 1;
+        while (left <= right) {
+            if (people[left] + people[right] > limit) { // 최소+최대가 limit 초과일 시 최대만 태우기
                 right--;
-            } else if(people[left] + people[right] <= limit) { // 최소+최대가 limit 이하일 시 둘 다 태우기
+            } else if (people[left] + people[right] <= limit) { // 최소+최대가 limit 이하일 시 둘 다 태우기
                 left++;
                 right--;
             }

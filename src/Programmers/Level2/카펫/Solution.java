@@ -4,13 +4,13 @@ package Programmers.Level2.카펫;
 //TODO: 기하 풀이 확인
 class Solution {
     public static int[] solution(int brown, int yellow) {
-        int xPlusY = (brown+4)/2;
-        int xy = yellow + 2*xPlusY - 4;
-        int x = (int)Math.ceil(xPlusY/2.0);
-        int y = xPlusY/2;
+        int xPlusY = (brown + 4) / 2;
+        int xy = yellow + 2 * xPlusY - 4;
+        int x = (int) Math.ceil(xPlusY / 2.0);
+        int y = xPlusY / 2;
 
-        while(y>0) {
-            if(x*y == xy) {
+        while (y > 0) {
+            if (x * y == xy) {
                 return new int[]{x, y};
             }
             x++;
