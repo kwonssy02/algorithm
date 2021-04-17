@@ -9,21 +9,21 @@ class Solution {
         final int[] noDuplicate = Arrays.stream(arr).distinct().toArray();
         int answer = 1;
         for (int i = 0; i < noDuplicate.length; i++) {
-            answer = answer*noDuplicate[i]/gcd(answer, noDuplicate[i]);
+            answer = answer * noDuplicate[i] / gcd(answer, noDuplicate[i]);
         }
         return answer;
     }
 
     public static int gcd(int a, int b) {
-        if(a < b) {
+        if (a < b) {
             int temp = a;
             a = b;
             b = temp;
         }
 
-        while(true) {
-            int temp = a%b;
-            if(temp == 0) {
+        while (true) {
+            int temp = a % b;
+            if (temp == 0) {
                 return b;
             }
             a = b;

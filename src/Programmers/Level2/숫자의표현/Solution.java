@@ -5,13 +5,13 @@ package Programmers.Level2.숫자의표현;
 class Solution {
     public static int solution(int n) {
 
-        boolean isOddNumber = (n%2) == 1;
+        boolean isOddNumber = (n % 2) == 1;
         int answer = 0;
-        for (int i = 1; i <= n*2; i++) {
-            if((n*2)%i == 0) {
-                if((isOddNumber && i%2 == 0) || (!isOddNumber && i%2 == 1))
+        for (int i = 1; i <= n * 2; i++) {
+            if ((n * 2) % i == 0) {
+                if ((isOddNumber && i % 2 == 0) || (!isOddNumber && i % 2 == 1))
                     answer++;
-                }
+            }
         }
         return answer;
     }

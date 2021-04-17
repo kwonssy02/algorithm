@@ -19,12 +19,12 @@ class Solution {
         for (String s : record) {
             String[] split = s.split(" ");
 
-            if("Enter".equals(split[0])) {
+            if ("Enter".equals(split[0])) {
                 nicknames.put(split[1], split[2]);
                 list.add(new C(0, split[1]));
             } else if ("Leave".equals(split[0])) {
                 list.add(new C(1, split[1]));
-            } else if("Change".equals(split[0])) {
+            } else if ("Change".equals(split[0])) {
                 nicknames.put(split[1], split[2]);
             }
         }
@@ -38,6 +38,10 @@ class Solution {
         return answer;
     }
 
+    public static void main(String[] args) {
+        solution(new String[]{"Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo", "Change uid4567 Ryan"});
+    }
+
     static class C {
         int action; // 0 Enter, 1 Leave
         String uid;
@@ -46,9 +50,5 @@ class Solution {
             this.action = action;
             this.uid = uid;
         }
-    }
-
-    public static void main(String[] args) {
-        solution(new String[]{"Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"});
     }
 }

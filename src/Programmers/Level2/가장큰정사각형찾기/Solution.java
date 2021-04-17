@@ -8,18 +8,18 @@ class Solution {
         int answer = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if(board[i][j] == 1) {
-                    if(i == 0 || j == 0) {
+                if (board[i][j] == 1) {
+                    if (i == 0 || j == 0) {
                         answer = Math.max(answer, 1);
                     } else {
-                        board[i][j] = Math.min(Math.min(board[i-1][j], board[i][j-1]), board[i-1][j-1]) + 1;
-                        if(answer < board[i][j])
+                        board[i][j] = Math.min(Math.min(board[i - 1][j], board[i][j - 1]), board[i - 1][j - 1]) + 1;
+                        if (answer < board[i][j])
                             answer = board[i][j];
                     }
                 }
             }
         }
-        return answer*answer;
+        return answer * answer;
     }
 
     // 시간초과

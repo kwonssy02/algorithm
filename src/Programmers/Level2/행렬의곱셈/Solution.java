@@ -9,7 +9,7 @@ class Solution {
             for (int j = 0; j < answer[i].length; j++) {
                 int temp = 0;
                 for (int k = 0; k < arr1[i].length; k++) {
-                    temp += arr1[i][k]*arr2[k][j];
+                    temp += arr1[i][k] * arr2[k][j];
                 }
                 answer[i][j] = temp;
             }

@@ -7,23 +7,23 @@ class Solution {
 
         int[] binary = new int[20];
         int index = 19;
-        while(n > 0) {
-            binary[index] = n%2;
+        while (n > 0) {
+            binary[index] = n % 2;
             n /= 2;
             index--;
         }
 
         int countOfOne = 0;
-        for (int i = binary.length-1; i > 0; i--) {
-            if(binary[i] == 1) {
+        for (int i = binary.length - 1; i > 0; i--) {
+            if (binary[i] == 1) {
                 countOfOne++;
-                if(binary[i-1] == 0) {
-                    binary[i-1] = 1;
+                if (binary[i - 1] == 0) {
+                    binary[i - 1] = 1;
                     countOfOne--;
-                    for (int j = i; j < binary.length-countOfOne; j++) {
+                    for (int j = i; j < binary.length - countOfOne; j++) {
                         binary[j] = 0;
                     }
-                    for (int j = binary.length-countOfOne; j < binary.length; j++) {
+                    for (int j = binary.length - countOfOne; j < binary.length; j++) {
                         binary[j] = 1;
                     }
                     break;
@@ -33,8 +33,8 @@ class Solution {
 
         int answer = 0;
         int multiply = 1;
-        for (int i = binary.length-1; i >= 0; i--) {
-            answer += multiply*binary[i];
+        for (int i = binary.length - 1; i >= 0; i--) {
+            answer += multiply * binary[i];
             multiply *= 2;
         }
 

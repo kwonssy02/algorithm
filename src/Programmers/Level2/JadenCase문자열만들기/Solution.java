@@ -8,18 +8,15 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
-            if(isFirstChar && ('a' <= c && c <= 'z')) {
-                arr[i] = (char)(c-32);
-            } else if (!isFirstChar && ('A' <= c && c <= 'Z')){
-                arr[i] = (char)(c+32);
+            if (isFirstChar && ('a' <= c && c <= 'z')) {
+                arr[i] = (char) (c - 32);
+            } else if (!isFirstChar && ('A' <= c && c <= 'Z')) {
+                arr[i] = (char) (c + 32);
             } else {
                 arr[i] = c;
             }
 
-            if (c == ' ')
-                isFirstChar = true;
-            else
-                isFirstChar = false;
+            isFirstChar = c == ' ';
         }
 
         return new String(arr);

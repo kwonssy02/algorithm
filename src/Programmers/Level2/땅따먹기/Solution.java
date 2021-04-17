@@ -10,16 +10,16 @@ class Solution {
             for (int j = 0; j < 4; j++) {
                 int max = 0;
                 for (int k = 0; k < 4; k++) {
-                    if(k == j) continue;
-                    if(max < land[i-1][k]) {
-                        max = land[i-1][k];
+                    if (k == j) continue;
+                    if (max < land[i - 1][k]) {
+                        max = land[i - 1][k];
                     }
                 }
                 land[i][j] += max;
             }
         }
 
-        return Math.max(land[land.length-1][0], Math.max(land[land.length-1][1], Math.max(land[land.length-1][2], land[land.length-1][3])));
+        return Math.max(land[land.length - 1][0], Math.max(land[land.length - 1][1], Math.max(land[land.length - 1][2], land[land.length - 1][3])));
     }
 
     // 시간초과
