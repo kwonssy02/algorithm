@@ -1,10 +1,29 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12913
 package Programmers.Level2.땅따먹기;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 class Solution {
+
+    // DP
+    static int solution(int[][] land) {
+
+        for (int i = 1; i < land.length; i++) {
+            for (int j = 0; j < 4; j++) {
+                int max = 0;
+                for (int k = 0; k < 4; k++) {
+                    if(k == j) continue;
+                    if(max < land[i-1][k]) {
+                        max = land[i-1][k];
+                    }
+                }
+                land[i][j] += max;
+            }
+        }
+
+        return Math.max(land[land.length-1][0], Math.max(land[land.length-1][1], Math.max(land[land.length-1][2], land[land.length-1][3])));
+    }
+
+    // 시간초과
+    /*
     static int solution(int[][] land) {
 
         Queue<C> queue = new LinkedList<>();
@@ -29,7 +48,6 @@ class Solution {
 
         return answer;
     }
-
     static class C {
         int row;
         int col;
@@ -41,16 +59,13 @@ class Solution {
             this.sum = sum;
         }
     }
+     */
 
     public static void main(String[] args) {
         System.out.println(solution(
                 new int[][]{
                         new int[]{1, 2, 3, 5},
                         new int[]{5, 6, 7, 8},
-                        new int[]{4, 3, 2, 1},
-                        new int[]{4, 3, 2, 1},
-                        new int[]{4, 3, 2, 1},
-                        new int[]{4, 3, 2, 1},
                         new int[]{4, 3, 2, 1}
                 }
         ));
