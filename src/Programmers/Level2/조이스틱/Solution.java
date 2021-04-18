@@ -1,6 +1,7 @@
 // https://programmers.co.kr/learn/courses/30/lessons/42860
 package Programmers.Level2.조이스틱;
 
+//TODO: 쉬운 구현 찾아보기
 class Solution {
 
     public static int setAlphabet(char c) {
