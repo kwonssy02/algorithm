@@ -12,12 +12,12 @@ class Solution {
         char lastChar = words[0].charAt(0);
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
-            if(word.charAt(0) != lastChar) {
-                return new int[]{i%n+1, i/n+1};
+            if (word.charAt(0) != lastChar) {
+                return new int[]{i % n + 1, i / n + 1};
             }
-            lastChar = word.charAt(word.length()-1);
-            if(!set.add(word)) {
-                return new int[]{i%n+1, i/n+1};
+            lastChar = word.charAt(word.length() - 1);
+            if (!set.add(word)) {
+                return new int[]{i % n + 1, i / n + 1};
             }
         }
 
