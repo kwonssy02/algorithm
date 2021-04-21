@@ -6,6 +6,8 @@ import java.util.Arrays;
 //TODO: Dijkstra (다익스트라) Priority Queue 로 O(nlogn) 만들기
 // https://hsp1116.tistory.com/42
 class Solution {
+
+    // O(n^2)
     int[][] path;
     boolean[] visited;
     int[] distance;
@@ -22,7 +24,7 @@ class Solution {
         for (int i = 0; i < roads.length; i++) {
             int[] road = roads[i];
             int source = road[0], target = road[1], length = road[2];
-            if(path[source][target] > length) {
+            if (path[source][target] > length) {
                 path[source][target] = length;
                 path[target][source] = length;
             }
@@ -65,9 +67,10 @@ class Solution {
         }
     }
 
-
     public static void main(String[] args) {
         Solution solution = new Solution();
+
+        long before = System.nanoTime();
         System.out.println(solution.solution(5, new int[][]{
                 new int[]{1, 2, 1},
                 new int[]{2, 3, 3},
@@ -76,6 +79,10 @@ class Solution {
                 new int[]{5, 3, 1},
                 new int[]{5, 4, 2}
         }, 3));
+        long after = System.nanoTime();
+        System.out.println(after - before);
+
+        before = System.nanoTime();
         System.out.println(solution.solution(6, new int[][]{
                 new int[]{1, 2, 1},
                 new int[]{1, 3, 2},
@@ -85,5 +92,7 @@ class Solution {
                 new int[]{3, 5, 3},
                 new int[]{5, 6, 1}
         }, 4));
+        after = System.nanoTime();
+        System.out.println(after - before);
     }
 }
