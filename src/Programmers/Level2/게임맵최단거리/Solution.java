@@ -1,3 +1,4 @@
+// https://programmers.co.kr/learn/courses/30/lessons/1844
 package Programmers.Level2.게임맵최단거리;
 
 import java.util.LinkedList;
@@ -6,6 +7,25 @@ import java.util.Queue;
 class Solution {
 
     boolean[][] visited;
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.solution(new int[][]{
+                new int[]{1, 0, 1, 1, 1},
+                new int[]{1, 0, 1, 0, 1},
+                new int[]{1, 0, 1, 1, 1},
+                new int[]{1, 1, 1, 0, 1},
+                new int[]{0, 0, 0, 0, 1}
+        }));
+
+        System.out.println(solution.solution(new int[][]{
+                new int[]{1, 0, 1, 1, 1},
+                new int[]{1, 0, 1, 0, 1},
+                new int[]{1, 0, 1, 1, 1},
+                new int[]{1, 1, 1, 0, 0},
+                new int[]{0, 0, 0, 0, 1}
+        }));
+    }
 
     public int solution(int[][] maps) {
         visited = new boolean[maps.length][maps[0].length];
@@ -50,24 +70,5 @@ class Solution {
             this.y = y;
             this.step = step;
         }
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.solution(new int[][]{
-                new int[]{1, 0, 1, 1, 1},
-                new int[]{1, 0, 1, 0, 1},
-                new int[]{1, 0, 1, 1, 1},
-                new int[]{1, 1, 1, 0, 1},
-                new int[]{0, 0, 0, 0, 1}
-        }));
-
-        System.out.println(solution.solution(new int[][]{
-                new int[]{1, 0, 1, 1, 1},
-                new int[]{1, 0, 1, 0, 1},
-                new int[]{1, 0, 1, 1, 1},
-                new int[]{1, 1, 1, 0, 0},
-                new int[]{0, 0, 0, 0, 1}
-        }));
     }
 }

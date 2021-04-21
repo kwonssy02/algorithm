@@ -14,23 +14,23 @@ class Solution {
             int _x = x, _y = y;
             switch (c) {
                 case 'U':
-                    if(y+1 > 5) continue;
+                    if (y + 1 > 5) continue;
                     _y++;
                     break;
                 case 'D':
-                    if(y-1 < -5) continue;
+                    if (y - 1 < -5) continue;
                     _y--;
                     break;
                 case 'R':
-                    if(x+1 > 5) continue;
+                    if (x + 1 > 5) continue;
                     _x++;
                     break;
                 case 'L':
-                    if(x-1 < -5) continue;
+                    if (x - 1 < -5) continue;
                     _x--;
                     break;
             }
-            if(set.add("" + (x+_x) + (y+_y)))
+            if (set.add("" + (x + _x) + (y + _y)))
                 answer++;
 
             x = _x;

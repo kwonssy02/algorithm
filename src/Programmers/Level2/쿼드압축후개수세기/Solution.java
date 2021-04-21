@@ -28,20 +28,6 @@ class Solution {
                 .add(quadratic(arr, n / 2, x + n / 2, y + n / 2));
     }
 
-    static class C {
-        int zero;
-        int one;
-
-        public C(final int zero, final int one) {
-            this.zero = zero;
-            this.one = one;
-        }
-
-        C add(C other) {
-            return new C(this.zero + other.zero, this.one + other.one);
-        }
-    }
-
     public static int[] solution(int[][] arr) {
         final C quadratic = quadratic(arr, arr.length, 0, 0);
         int[] answer = {quadratic.zero, quadratic.one};
@@ -65,5 +51,19 @@ class Solution {
                 new int[]{0, 0, 0, 0, 1, 0, 0, 1},
                 new int[]{0, 0, 0, 0, 1, 1, 1, 1}
         });
+    }
+
+    static class C {
+        int zero;
+        int one;
+
+        public C(final int zero, final int one) {
+            this.zero = zero;
+            this.one = one;
+        }
+
+        C add(C other) {
+            return new C(this.zero + other.zero, this.one + other.one);
+        }
     }
 }
