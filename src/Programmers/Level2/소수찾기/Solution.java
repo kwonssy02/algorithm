@@ -4,7 +4,6 @@ package Programmers.Level2.소수찾기;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 class Solution {
     public static int solution(String numbers) {
 
@@ -41,6 +40,7 @@ class Solution {
         return answer;
     }
 
+    // 순열
     static void permutation(String numbers, String str, int depth, boolean[] visited, Set<Integer> set) {
         if (!"".equals(str))
             set.add(Integer.parseInt(str));
