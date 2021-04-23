@@ -5,15 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution("FRANCE", "french"));
-        System.out.println(solution.solution("handshake", "shake hands"));
-        System.out.println(solution.solution("aa1+aa2", "AAAA12"));
-        System.out.println(solution.solution("E=M*C^2", "e=m*c^2"));
-        System.out.println(solution.solution("AA", "BB"));
-    }
-
     public int solution(String str1, String str2) {
         Map<String, Integer> map = new HashMap<>();
         str1 = str1.toLowerCase();
@@ -54,5 +45,14 @@ class Solution {
         if (str1Count + str2Count - intersectionCount == 0)
             return 65536;
         return intersectionCount * 65536 / (str1Count + str2Count - intersectionCount);
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution("FRANCE", "french"));
+        System.out.println(solution.solution("handshake", "shake hands"));
+        System.out.println(solution.solution("aa1+aa2", "AAAA12"));
+        System.out.println(solution.solution("E=M*C^2", "e=m*c^2"));
+        System.out.println(solution.solution("AA", "BB"));
     }
 }

@@ -42,18 +42,6 @@ class Solution {
     }
      */
 
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution(new String[][]{
-                new String[]{"100", "ryan", "music", "2"},
-                new String[]{"200", "apeach", "math", "2"},
-                new String[]{"300", "tube", "computer", "3"},
-                new String[]{"400", "con", "computer", "4"},
-                new String[]{"500", "muzi", "music", "3"},
-                new String[]{"600", "apeach", "music", "2"}
-        }));
-    }
-
     public int solution(String[][] relation) {
         // 모든 Attribute에 대해 후보키 시뮬레이션
 
@@ -107,5 +95,17 @@ class Solution {
         }
 
         return tuples.size();
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution(new String[][]{
+                new String[]{"100", "ryan", "music", "2"},
+                new String[]{"200", "apeach", "math", "2"},
+                new String[]{"300", "tube", "computer", "3"},
+                new String[]{"400", "con", "computer", "4"},
+                new String[]{"500", "muzi", "music", "3"},
+                new String[]{"600", "apeach", "music", "2"}
+        }));
     }
 }

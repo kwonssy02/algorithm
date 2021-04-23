@@ -12,13 +12,6 @@ class Solution {
 
     Pattern pattern = Pattern.compile("[ABCDEFG][#]?");
 
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution("ABCDEFG", new String[]{"12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"}));
-        System.out.println(solution.solution("CC#BCC#BCC#BCC#B", new String[]{"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"}));
-        System.out.println(solution.solution("ABC", new String[]{"12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"}));
-    }
-
     public String solution(String m, String[] musicinfos) {
 
         final Matcher m1 = pattern.matcher(m);
@@ -80,5 +73,12 @@ class Solution {
             this.duration = duration;
             this.order = order;
         }
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution("ABCDEFG", new String[]{"12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"}));
+        System.out.println(solution.solution("CC#BCC#BCC#BCC#B", new String[]{"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"}));
+        System.out.println(solution.solution("ABC", new String[]{"12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"}));
     }
 }

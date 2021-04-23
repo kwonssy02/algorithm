@@ -5,13 +5,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-
-        solution.solution(3, new String[]{"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"});
-        solution.solution(3, new String[]{"Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"});
-    }
-
     public int solution(int cacheSize, String[] cities) {
         Queue<String> queue = new LinkedList<>();
         int answer = 0;
@@ -31,5 +24,12 @@ class Solution {
                 queue.poll();
         }
         return answer;
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+
+        solution.solution(3, new String[]{"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"});
+        solution.solution(3, new String[]{"Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"});
     }
 }

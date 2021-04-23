@@ -6,13 +6,6 @@ import java.util.List;
 
 //TODO: Integer.toString 활용한 n진법 변환 살펴보기
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution(2, 4, 2, 1));
-//        solution.solution(16, 16, 2, 1);
-//        solution.solution(16, 16, 2, 2);
-    }
-
     public String solution(int n, int t, int m, int p) {
         List<Character> list = new ArrayList<>();
         char[] notationNumbers = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -43,5 +36,12 @@ class Solution {
             sb.append(list.get(i));
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution(2, 4, 2, 1));
+//        solution.solution(16, 16, 2, 1);
+//        solution.solution(16, 16, 2, 2);
     }
 }

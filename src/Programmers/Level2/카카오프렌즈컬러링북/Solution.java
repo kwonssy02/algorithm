@@ -2,18 +2,6 @@
 package Programmers.Level2.카카오프렌즈컬러링북;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        solution.solution(6, 4, new int[][]{
-                new int[]{1, 1, 1, 0},
-                new int[]{1, 2, 2, 0},
-                new int[]{1, 0, 0, 1},
-                new int[]{0, 0, 0, 1},
-                new int[]{0, 0, 0, 3},
-                new int[]{0, 0, 0, 3}
-        });
-    }
-
     public int[] solution(int m, int n, int[][] picture) {
 
         boolean[][] visited = new boolean[m][n];
@@ -52,6 +40,18 @@ class Solution {
                 + bfs(color, x - 1, y, m, n, visited, picture)
                 + bfs(color, x, y + 1, m, n, visited, picture)
                 + bfs(color, x, y - 1, m, n, visited, picture);
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        solution.solution(6, 4, new int[][]{
+                new int[]{1, 1, 1, 0},
+                new int[]{1, 2, 2, 0},
+                new int[]{1, 0, 0, 1},
+                new int[]{0, 0, 0, 1},
+                new int[]{0, 0, 0, 3},
+                new int[]{0, 0, 0, 3}
+        });
     }
 }
 

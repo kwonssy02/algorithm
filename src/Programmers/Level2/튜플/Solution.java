@@ -7,10 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Solution {
-    public static void main(String[] args) {
-        new Solution().solution("{{2},{2,1},{2,1,3},{2,1,3,4}}");
-    }
-
     public int[] solution(String s) {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(s);
@@ -27,5 +23,9 @@ class Solution {
         }
 
         return answer;
+    }
+
+    public static void main(String[] args) {
+        new Solution().solution("{{2},{2,1},{2,1,3},{2,1,3,4}}");
     }
 }

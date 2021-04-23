@@ -7,13 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        solution.solution("KAKAO");
-        solution.solution("TOBEORNOTTOBEORTOBEORNOT");
-        solution.solution("ABABABABABABABAB");
-    }
-
     public int[] solution(String msg) {
         Map<String, Integer> index = new HashMap<>();
         List<Integer> list = new ArrayList<>();
@@ -50,5 +43,12 @@ class Solution {
         }
 //        System.out.println();
         return answer;
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        solution.solution("KAKAO");
+        solution.solution("TOBEORNOTTOBEORTOBEORNOT");
+        solution.solution("ABABABABABABABAB");
     }
 }

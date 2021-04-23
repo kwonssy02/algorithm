@@ -4,13 +4,6 @@ package Programmers.Level2.메뉴리뉴얼;
 import java.util.*;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        solution.solution(new String[]{"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"}, new int[]{2, 3, 4});
-        solution.solution(new String[]{"ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"}, new int[]{2, 3, 5});
-        solution.solution(new String[]{"XYZ", "XWY", "WXA"}, new int[]{2, 3, 4});
-    }
-
     public String[] solution(String[] orders, int[] course) {
         Map<String, Integer> map = new TreeMap();
         // 각 Order 별로 tuple 만들기.. (tuple 원소 개수: int[] course의 원소 중 1)
@@ -83,5 +76,12 @@ class Solution {
                     ", count=" + count +
                     '}';
         }
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        solution.solution(new String[]{"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"}, new int[]{2, 3, 4});
+        solution.solution(new String[]{"ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"}, new int[]{2, 3, 5});
+        solution.solution(new String[]{"XYZ", "XWY", "WXA"}, new int[]{2, 3, 4});
     }
 }

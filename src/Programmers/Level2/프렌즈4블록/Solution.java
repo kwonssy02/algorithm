@@ -7,17 +7,6 @@ import java.util.List;
 import java.util.TreeSet;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution(2, 2, new String[]{"CC", "CC"}));
-        System.out.println(solution.solution(4, 5, new String[]{"CCBDE", "AAADE", "AAABF", "CCBBF"}));
-        System.out.println(solution.solution(6, 6, new String[]{"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"}));
-        System.out.println(solution.solution(6, 6, new String[]{"TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT"}));
-        System.out.println(solution.solution(4, 4, new String[]{"AAAA", "AMMA", "AMMA", "AAAA"}));
-
-
-    }
-
     public int solution(int m, int n, String[] board) {
         List<List<Character>> list = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -84,5 +73,16 @@ class Solution {
                 return o.y - y;
             return o.x - x;
         }
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution(2, 2, new String[]{"CC", "CC"}));
+        System.out.println(solution.solution(4, 5, new String[]{"CCBDE", "AAADE", "AAABF", "CCBBF"}));
+        System.out.println(solution.solution(6, 6, new String[]{"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"}));
+        System.out.println(solution.solution(6, 6, new String[]{"TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT", "TTTTTT"}));
+        System.out.println(solution.solution(4, 4, new String[]{"AAAA", "AMMA", "AMMA", "AAAA"}));
+
+
     }
 }

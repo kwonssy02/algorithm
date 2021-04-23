@@ -9,12 +9,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Solution {
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        System.out.println(solution.solution("100-200*300-500+20"));
-        System.out.println(solution.solution("50*6-3*2"));
-    }
-
     public long solution(String expression) {
         Pattern pattern = Pattern.compile("([+*-]?)([0-9]+)");
         final Matcher m = pattern.matcher(expression);
@@ -102,5 +96,11 @@ class Solution {
         public C copy() {
             return new C(number, operand);
         }
+    }
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        System.out.println(solution.solution("100-200*300-500+20"));
+        System.out.println(solution.solution("50*6-3*2"));
     }
 }
