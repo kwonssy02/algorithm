@@ -6,6 +6,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Solution {
+    static Pattern pattern = Pattern.compile("^([a-zA-Z -]+)([0-9]{1,5})");
+
+    public static void main(String[] args) {
+        final Solution solution = new Solution();
+        solution.solution(new String[]{"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"});
+        solution.solution(new String[]{"F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"});
+    }
+
     public String[] solution(String[] files) {
         File[] fileNames = new File[files.length];
         for (int i = 0; i < files.length; i++) {
@@ -19,8 +27,6 @@ class Solution {
         }
         return answer;
     }
-
-    static Pattern pattern = Pattern.compile("^([a-zA-Z -]+)([0-9]{1,5})");
 
     class File implements Comparable<File> {
 
@@ -52,11 +58,5 @@ class Solution {
             }
             return headCompare;
         }
-    }
-
-    public static void main(String[] args) {
-        final Solution solution = new Solution();
-        solution.solution(new String[]{"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"});
-        solution.solution(new String[]{"F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "F-14 Tomcat"});
     }
 }

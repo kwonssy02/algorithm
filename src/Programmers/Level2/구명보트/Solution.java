@@ -3,7 +3,6 @@ package Programmers.Level2.구명보트;
 
 import java.util.Arrays;
 
-//TODO: 구명보트 1개를 최대 무게로 싣도록...
 class Solution {
     public static int solution(int[] people, int limit) {
         Arrays.sort(people);
