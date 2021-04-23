@@ -3,7 +3,45 @@ package Programmers.Level2.후보키;
 
 import java.util.*;
 
+//TODO: 단순 풀이법 찾기
 class Solution {
+    /*
+    private boolean possi(List<Integer> list, int now){
+        for(int i = 0; i < list.size(); i++){
+            if ( (list.get(i) & now) == list.get(i)) return false;
+        }
+        return true;
+    }
+    public int solution(String[][] relation) {
+        int n = relation.length;        // 가로
+        int m = relation[0].length;     // 세로
+
+        List<Integer> list = new ArrayList<>();
+
+        for(int i = 1; i < (1<<m); i++){ // 1~2^m loop
+            Set<String> s = new HashSet<>();
+            for(int j = 0; j < n; j++){ // relation loop
+                String now = "";
+                for(int k = 0; k < m; k++){
+                    if( (i & (1<<k)) > 0 ){
+                        // i = 1, k = 0 -> 1 & 0 = 0
+                        // i = 1, k = 1 -> 1 & 2 = 0
+                        // i = 1, k = 2 -> 1 & 4 = 0
+                        // System.out.print((i & (i<<k)) + " ");
+                        now += relation[j][k];
+                        // System.out.println(relation[j][k]);
+                    }
+                }
+                s.add(now);
+            }
+            if(s.size() == n && possi(list, i) ){
+                list.add(i);
+            }
+        }
+        return list.size();
+    }
+     */
+
     public int solution(String[][] relation) {
         // 모든 Attribute에 대해 후보키 시뮬레이션
 
@@ -22,7 +60,7 @@ class Solution {
             int size = tuples.size();
             for (int j = lastIndex; j < size; j++) {
                 List<Integer> temp = new ArrayList<>(tuples.get(j));
-                for (int k = temp.get(temp.size()-1)+1; k < numOfAttributes; k++) {
+                for (int k = temp.get(temp.size() - 1) + 1; k < numOfAttributes; k++) {
                     List<Integer> newTuple = new ArrayList<>(temp);
                     newTuple.add(k);
                     tuples.add(newTuple);
@@ -30,13 +68,6 @@ class Solution {
             }
             lastIndex = size;
         }
-
-//        for (int i = 0; i < tuples.size(); i++) {
-//            for (int j = 0; j < tuples.get(i).size(); j++) {
-//                System.out.print(tuples.get(i).get(j) + " ");
-//            }
-//            System.out.println();
-//        }
 
         for (int i = 0; i < tuples.size(); i++) {
             List<Integer> tuple = tuples.get(i);
@@ -47,18 +78,14 @@ class Solution {
                 for (Integer index : tuple) {
                     temp += relation[j][index] + ",";
                 }
-                if(!set.add(temp)) {
+                if (!set.add(temp)) {
                     isKey = false;
                     break;
                 }
             }
-            if(isKey) {
-//                for (int i1 = 0; i1 < tuple.size(); i1++) {
-//                    System.out.print(tuple.get(i1) + " ");
-//                }
-//                System.out.println();
-                for (int k = i+1; k < tuples.size(); k++) {
-                    if(tuples.get(k).containsAll(tuple)) {
+            if (isKey) {
+                for (int k = i + 1; k < tuples.size(); k++) {
+                    if (tuples.get(k).containsAll(tuple)) {
                         tuples.remove(k--);
                     }
                 }
@@ -66,14 +93,6 @@ class Solution {
                 tuples.remove(i--);
             }
         }
-
-//        System.out.println();
-//        for (int i = 0; i < tuples.size(); i++) {
-//            for (int j = 0; j < tuples.get(i).size(); j++) {
-//                System.out.print(tuples.get(i).get(j) + " ");
-//            }
-//            System.out.println();
-//        }
 
         return tuples.size();
     }
