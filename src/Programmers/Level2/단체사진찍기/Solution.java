@@ -48,34 +48,35 @@ class Solution {
         }
 
         boolean[] visited = new boolean[characters.length];
-        List<String> permutations = new ArrayList<>();
-        permutation("", characters, visited, map, permutations);
-
-        return permutations.size();
+        return permutation("", characters, visited, map);
     }
 
-    private void permutation(String p, String[] characters, boolean[] visited, Map<String, List<Integer>> map, List<String> permutations) {
-        if (p.length() == characters.length) {
-            for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
-                int c1Index = p.indexOf(entry.getKey().substring(0, 1));
-                int c2Index = p.indexOf(entry.getKey().substring(1));
-
-                if (!entry.getValue().contains(Math.abs(c2Index - c1Index) - 1)) {
-                    return;
+    private int permutation(String p, String[] characters, boolean[] visited, Map<String, List<Integer>> restrictions) {
+        for (int i = 0; i < characters.length; i++) {
+            for (int j = i + 1; j < characters.length; j++) {
+                if (visited[i] && visited[j] && restrictions.get(characters[i] + characters[j]) != null) {
+                    int c1Index = p.indexOf(characters[i]);
+                    int c2Index = p.indexOf(characters[j]);
+                    if (!restrictions.get(characters[i] + characters[j]).contains(Math.abs(c2Index - c1Index) - 1)) {
+                        return 0;
+                    }
                 }
             }
-
-            permutations.add(p);
-            return;
         }
 
+        if (p.length() == characters.length) {
+            return 1;
+        }
+
+        int answer = 0;
         for (int i = 0; i < visited.length; i++) {
             if (!visited[i]) {
                 visited[i] = true;
-                permutation(p.concat(characters[i]), characters, visited, map, permutations);
+                answer += permutation(p.concat(characters[i]), characters, visited, restrictions);
                 visited[i] = false;
             }
         }
+        return answer;
     }
 
     public static void main(String[] args) {
