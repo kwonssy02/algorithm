@@ -15,7 +15,8 @@ Java/C++/Python 이중 택1
 - Stack/Queue
 
 ## 문제 풀이
-[프로그래머스 Programmers](https://programmers.co.kr/learn/challenges) 사이트에서 진행
+- [프로그래머스 Programmers](https://programmers.co.kr/learn/challenges) 사이트에서 진행
+- [문제 목록](PROGRAMMERS-PROBLEMS.md)
 
 ## Objectives
 - Programmers Level 1 다 풀기
