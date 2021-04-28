@@ -13,11 +13,11 @@ class Solution {
         map[0][0] = 1;
         for (int mi = 0; mi < map.length; mi++) {
             for (int ni = 0; ni < map[mi].length; ni++) {
-                if(mi == 0 && ni == 0) continue;
-                if(map[mi][ni] == -1)
+                if (mi == 0 && ni == 0) continue;
+                if (map[mi][ni] == -1)
                     continue;
-                int left = (mi-1 < 0 || map[mi-1][ni] == -1 ? 0 : map[mi-1][ni]);
-                int up =  (ni-1 < 0 || map[mi][ni-1] == -1 ? 0 : map[mi][ni-1]);
+                int left = (mi - 1 < 0 || map[mi - 1][ni] == -1 ? 0 : map[mi - 1][ni]);
+                int up = (ni - 1 < 0 || map[mi][ni - 1] == -1 ? 0 : map[mi][ni - 1]);
                 map[mi][ni] = (left + up) % 1000000007;
             }
         }
