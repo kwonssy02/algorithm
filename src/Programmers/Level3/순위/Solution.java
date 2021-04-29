@@ -22,11 +22,11 @@ class Solution {
         for (int i = 1; i <= n; i++) {
             int count = 0;
             for (int j = 1; j <= n; j++) {
-                if(i==j)continue;
-                if(fights[i][j] != 0)
+                if (i == j) continue;
+                if (fights[i][j] != 0)
                     count++;
             }
-            if(count == n-1)
+            if (count == n - 1)
                 answer++;
         }
 
