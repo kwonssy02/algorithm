@@ -1,13 +1,12 @@
 // https://programmers.co.kr/learn/courses/30/lessons/17676
 package Programmers.Level3._1차_추석트래픽;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Solution {
     public int solution(String[] lines) {
-        // 각 트래픽의 (시작시간-1초)~(시작시간) 구간만 검사
+        // 각 트래픽의 (끝)~(끝+1초) 구간만 검사
         final Pattern pattern = Pattern.compile("^2016\\-09\\-15 (\\d\\d):(\\d\\d):(\\d\\d)[.](\\d\\d\\d)[ ](\\d(.[\\d]+)?)[s]$");
 
         Timeline[] timeline = new Timeline[lines.length];
@@ -22,16 +21,17 @@ class Solution {
         }
 
         // 시작시간 기준으로 오름차순 정렬
-        Arrays.sort(timeline, (o1, o2) -> {
-            if (o1.start - o2.start == 0)
-                return o1.end - o2.end;
-            return o1.start - o2.start;
-        });
+//        Arrays.sort(timeline, (o1, o2) -> {
+//            if (o1.start - o2.start == 0)
+//                return o1.end - o2.end;
+//            return o1.start - o2.start;
+//        });
 
+        // O(n^2) 풀이
         int max = 0;
         for (int i = 0; i < timeline.length; i++) {
-            int from = timeline[i].start - 999;
-            int to = timeline[i].start;
+            int from = timeline[i].end;
+            int to = timeline[i].end + 999;
             int count = 0;
             for (int j = 0; j < timeline.length; j++) {
                 if (to < timeline[j].start || from > timeline[j].end)
