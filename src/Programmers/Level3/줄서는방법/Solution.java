@@ -8,7 +8,7 @@ class Solution {
     public int[] solution(int n, long k) {
         long[] factorials = new long[n + 1];
         factorials[1] = 1;
-        for (int i = 2; i <= n-1; i++) {
+        for (int i = 2; i <= n - 1; i++) {
             factorials[i] = factorials[i - 1] * i;
         }
 
@@ -29,7 +29,7 @@ class Solution {
 
             answer[answerIndex++] = numbers.remove(numberIndex);
             temp--;
-            if(temp == 0) {
+            if (temp == 0) {
                 answer[answerIndex] = numbers.get(0);
                 break;
             }
