@@ -3,6 +3,7 @@ package Programmers.Level3.징검다리건너기;
 
 import java.util.TreeMap;
 
+//TODO: 이진탐색 적용?
 class Solution {
     public int solution(int[] stones, int k) {
         // 원소가 k개인 부분배열들 중 최대값이 최소인 것 찾기
