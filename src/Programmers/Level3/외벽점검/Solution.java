@@ -37,16 +37,28 @@ class Solution {
 //            }
 //            System.out.println();
 
-            int pIndex = 0;
-            Set<Integer> weakVisited = new HashSet<>();
             for (int i = 0; i < weak.length; i++) {
-                int start = weak[i];
-                //TODO: start부터 시작하는 직선 array 만들고 취약점 점검
+                Queue<Integer> weakQ = new LinkedList<>();
+                for (int j = i; j < weak.length; j++) {
+                    weakQ.add(weak[j]);
+                }
+                for (int j = 0; j < i; j++) {
+                    weakQ.add(weak[j]+n);
+                }
 
-            }
+                for (Integer distance : p) {
+                    int start = weakQ.peek();
+                    while(!weakQ.isEmpty()) {
+                        if(start + distance >= weakQ.peek()) {
+                            weakQ.poll();
+                        } else {
+                            break;
+                        }
+                    }
+                }
 
-            if (weakVisited.size() == weak.length) {
-                return p.size();
+                if(weakQ.isEmpty())
+                    return p.size();
             }
         }
 
@@ -73,6 +85,6 @@ class Solution {
 
     public static void main(String[] args) {
         System.out.println(new Solution().solution(12, new int[]{1, 5, 6, 10}, new int[]{1, 2, 3, 4}));
-//        System.out.println(new Solution().solution(12, new int[]{1, 3, 4, 9, 10}, new int[]{3, 5, 7}));
+        System.out.println(new Solution().solution(12, new int[]{1, 3, 4, 9, 10}, new int[]{3, 5, 7}));
     }
 }
