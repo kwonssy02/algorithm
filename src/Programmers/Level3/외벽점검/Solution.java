@@ -43,13 +43,13 @@ class Solution {
                     weakQ.add(weak[j]);
                 }
                 for (int j = 0; j < i; j++) {
-                    weakQ.add(weak[j]+n);
+                    weakQ.add(weak[j] + n);
                 }
 
                 for (Integer distance : p) {
                     int start = weakQ.peek();
-                    while(!weakQ.isEmpty()) {
-                        if(start + distance >= weakQ.peek()) {
+                    while (!weakQ.isEmpty()) {
+                        if (start + distance >= weakQ.peek()) {
                             weakQ.poll();
                         } else {
                             break;
@@ -57,7 +57,7 @@ class Solution {
                     }
                 }
 
-                if(weakQ.isEmpty())
+                if (weakQ.isEmpty())
                     return p.size();
             }
         }
