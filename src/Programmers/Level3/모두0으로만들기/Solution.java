@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
+
+    List<Integer>[] nodes;
+    long[] weights;
+
     public long solution(int[] a, int[][] edges) {
 
         long sum = 0;
@@ -14,12 +18,13 @@ class Solution {
         if (sum != 0)
             return -1;
 
-        List<Integer>[] nodes = new List[a.length];
+        nodes = new List[a.length];
         for (int i = 0; i < a.length; i++) {
             nodes[i] = new ArrayList<>();
         }
 
-        for (int[] edge : edges) {
+        for (int i = 0; i < edges.length; i++) {
+            int[] edge = edges[i];
             int u = edge[0];
             int v = edge[1];
 
@@ -27,25 +32,25 @@ class Solution {
             nodes[v].add(u);
         }
 
-        long[] weights = new long[a.length];
+        weights = new long[a.length];
         for (int i = 0; i < a.length; i++) {
             weights[i] = a[i];
         }
 
-        return dfs(nodes, weights, 0, 0);
+        return dfs(0, 0);
     }
 
-    private long dfs(List<Integer>[] nodes, long[] weights, int currentNode, int parentNode) {
-//        System.out.println("currentNode = " + currentNode + ", parentNode = " + parentNode);
+    // currentNode의 인접 node들로부터 weight 흡수 후, parentNode로 weight 옮기기
+    private long dfs(int currentNode, int parentNode) {
         long count = 0;
-        for (Integer node : nodes[currentNode]) {
+        for (int i = 0; i < nodes[currentNode].size(); i++) {
+            int node = nodes[currentNode].get(i);
             if (node != parentNode)
-                count += dfs(nodes, weights, node, currentNode);
+                count += dfs(node, currentNode);
         }
 
         weights[parentNode] += weights[currentNode];
         count += Math.abs(weights[currentNode]);
-        weights[currentNode] = 0;
 
         return count;
     }
