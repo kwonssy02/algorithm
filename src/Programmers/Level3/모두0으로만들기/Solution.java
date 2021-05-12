@@ -4,6 +4,7 @@ package Programmers.Level3.모두0으로만들기;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO queue 이용해 leaf 노드부터 root 로 올리는 구현 방법 찾기
 class Solution {
 
     List<Integer>[] nodes;
