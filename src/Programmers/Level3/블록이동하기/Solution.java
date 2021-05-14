@@ -5,7 +5,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] board) {
-        Map<C, Integer> dp = new HashMap<>();
+        Set<C> visited = new HashSet<>();
         Queue<C> q = new LinkedList<>();
 
         q.add(new C(0, 0, 0, 1, 0));
@@ -16,10 +16,10 @@ class Solution {
                 return poll.count;
             }
 
-            if (dp.getOrDefault(poll, Integer.MAX_VALUE) <= poll.count)
+            if (visited.contains(poll))
                 continue;
 
-            dp.put(poll, poll.count);
+            visited.add(poll);
 
             // up
             if (poll.ay - 1 >= 0 && board[poll.ay - 1][poll.ax] == 0 && board[poll.by - 1][poll.bx] == 0) {
