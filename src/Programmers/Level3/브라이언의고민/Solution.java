@@ -44,8 +44,8 @@ class Solution {
             for (int i = index + 1; i <= lastIndex - 1; i++) {
                 char ch = sentence.charAt(i);
 //                System.out.println(ch);
-                if (('a' <= ch && ch <= 'z') && secondRuleChar == ch) throw new RuntimeException("err2"); // 규칙2 캐릭터 사용됨
-                if (('a' <= ch && ch <= 'z') && firstRuleChar == null) { // 규칙1 캐릭터 발견
+                if (isLowercase(ch) && secondRuleChar == ch) throw new RuntimeException("err2"); // 규칙2 캐릭터 사용됨
+                if (isLowercase(ch) && firstRuleChar == null) { // 규칙1 캐릭터 발견
                     if (usedChars.contains(ch)) throw new RuntimeException("used chars2");
                     usedChars.add(ch);
 
@@ -53,9 +53,9 @@ class Solution {
                     firstRuleCharIndex = i;
                     continue;
                 }
-                if (('a' <= ch && ch <= 'z') && firstRuleChar != ch)
+                if (isLowercase(ch) && firstRuleChar != ch)
                     throw new RuntimeException("err3"); // 규칙1 캐릭터 mismatch
-                if (('a' <= ch && ch <= 'z')) {
+                if (isLowercase(ch)) {
                     if (firstRuleCharIndex + 2 != i) throw new RuntimeException("err4"); // 규칙1 캐릭터 배열 에러
                     firstRuleCharIndex = i;
                     continue;
@@ -73,7 +73,7 @@ class Solution {
             Character firstSpecialChar = null;
             for (int i = index + 1; i < sentence.length(); i++) {
                 char ch = sentence.charAt(i);
-                if ('a' <= ch && ch <= 'z') {
+                if (isLowercase(ch)) {
                     firstSpecialCharIndex = i;
                     firstSpecialChar = ch;
                     break;
@@ -99,7 +99,7 @@ class Solution {
                 int firstRuleCharIndex = -1;
                 for (int i = index; i < sentence.length(); i++) {
                     char ch = sentence.charAt(i);
-                    if (('a' <= ch && ch <= 'z') && firstRuleChar == null) {
+                    if (isLowercase(ch) && firstRuleChar == null) {
                         if (sentence.indexOf(ch, i + 1) > i + 2) { // 또다른 firstRuleChar가 엉뚱한 곳에서 발견될 경우, 다른 규칙
                             if (result.length() != 0) result.append(" ");
                             result.append(sentence.charAt(index));
@@ -113,8 +113,9 @@ class Solution {
                         firstRuleCharIndex = i;
                         continue;
                     }
-                    if (('a' <= ch && ch <= 'z') && firstRuleChar != ch) break;
-                    if (('a' <= ch && ch <= 'z')) {
+                    if (isLowercase(ch) && firstRuleCharIndex + 1 == i) throw new RuntimeException("upper");
+                    if (isLowercase(ch) && firstRuleChar != ch) break;
+                    if (isLowercase(ch)) {
                         if (firstRuleCharIndex + 2 != i) throw new RuntimeException("err4"); // 규칙1 캐릭터 배열 에러
                         firstRuleCharIndex = i;
                         if (firstRuleCharIndex == sentence.length() - 1) {
@@ -129,6 +130,7 @@ class Solution {
                     }
                 }
 
+                if (firstRuleCharIndex + 1 >= sentence.length()) throw new RuntimeException("errrrr");
                 for (int i = index; i <= firstRuleCharIndex + 1; i += 2) {
                     sb.append(sentence.charAt(i));
                 }
@@ -138,6 +140,13 @@ class Solution {
                 parse(firstRuleCharIndex + 2, sentence, usedChars, result);
             }
         }
+    }
+
+    public boolean isLowercase(char c) {
+        if ('a' <= c && c <= 'z') {
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -158,18 +167,29 @@ class Solution {
         Assertions.assertThat(solution.solution("aAbAa")).isEqualTo("AA"); //규칙 1, 2 짧은 글자
         Assertions.assertThat(solution.solution("aGbWbFbDakGnWnLk")).isEqualTo("GWFD GWL");
         Assertions.assertThat(solution.solution("aGbWbFbDakGnWnLkAAA")).isEqualTo("GWFD GWL AAA");
+        Assertions.assertThat(solution.solution("aObObOa")).isEqualTo("OOO");
+        Assertions.assertThat(solution.solution("aObObOacOc")).isEqualTo("OOO O");
+        Assertions.assertThat(solution.solution("XcXbXcX")).isEqualTo("X XX X");
+        Assertions.assertThat(solution.solution("AAAaBaAbBBBBbCcBdBdBdBcCeBfBeGgGGjGjGRvRvRvRvRvR")).isEqualTo("AA ABA BBBB C BBBB C BB GG GGG RRRRRR");
+        Assertions.assertThat(solution.solution("aAbBbCa")).isEqualTo("ABC");
 
         Assertions.assertThat(solution.solution("")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("aaA")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("aa")).isEqualTo("invalid"); //INVALID
-        Assertions.assertThat(solution.solution("TxTxTxbAb")).isEqualTo("invalid"); //INVALID
-        Assertions.assertThat(solution.solution("TxTxTxbAb")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("abcba")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("bTxTxTaTxTbkABaCDk")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("xAaAbAaAx")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("baHELLOabWORLD")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("AbAaAbAaCa")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("aCaCa")).isEqualTo("invalid"); //INVALID
         Assertions.assertThat(solution.solution("AaAaAcA")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("xAaAbAaAx")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("AAA BBB")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("TxTxTxbAb")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("TxTxTxb")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("TxtxTxT")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("AAAa")).isEqualTo("invalid"); //INVALID
+        Assertions.assertThat(solution.solution("aBBBBca")).isEqualTo("invalid"); //INVALID
     }
 }
 
